@@ -1,0 +1,18 @@
+// Script to convert print jobs to monochrome if the user's balance is $0.00
+
+function printJobHook(inputs, actions) {
+
+  // Verify if this is the initial execution of the script for this job
+  if (!inputs.job.isAnalysisComplete) {
+    // Cease execution and await job analysis completion
+    return;
+  }
+
+  // Check the user's balance
+  if (inputs.user.balance === 0.00) {
+    // The user's balance is $0.00, convert the job to monochrome
+    actions.job.convertToGrayscale();
+    // Optionally, include a message to the user explaining the reason for the conversion (PaperCut Client required to display messages)
+    actions.client.sendMessage("Your print job has been converted to black and white because your balance is $0.00.");
+  }
+}
