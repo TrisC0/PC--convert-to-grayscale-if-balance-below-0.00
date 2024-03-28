@@ -1,1 +1,1 @@
-# PC--convert-to-grayscale-if-balance-below-0.00
+# PC--convert-to-grayscale-if-balance-is-0.00
